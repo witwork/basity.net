@@ -1,30 +1,188 @@
-/* Basity.net — shared style (legal pages) */
-:root { color-scheme: dark; }
+/* Basity.net — shared style (legal pages)
+   Bảng màu bám theo app: nền #0c0e12, hồng DARE, xanh DIAL, tím brand. */
+
+:root {
+  color-scheme: dark;
+  --ground: #0c0e12;
+  --raise:  #12151b;
+  --line:   rgba(78, 82, 94, .38);
+  --ink:    #edeef1;
+  --ink-2:  #b9bcc4;
+  --ink-3:  #7f838d;
+  --pink:   #fea2b3;
+  --pink-g: #f53d68;
+  --blue:   #83adff;
+  --blue-g: #2970fe;
+  --brand:  #9591eb;
+}
+
 * { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
 body {
-  margin: 0; background: #0c0e12; color: #e7e7e9;
-  font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font: 16.5px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  /* Quầng brand rất nhạt phía trên, cùng ngôn ngữ với launch screen của app. */
+  background-image:
+    radial-gradient(58rem 26rem at 50% -14rem, rgba(78, 71, 221, .20), transparent 70%);
+  background-repeat: no-repeat;
 }
-.wrap { max-width: 680px; margin: 0 auto; padding: 48px 22px 64px; }
-header.site { margin-bottom: 40px; }
-.brand { font-weight: 700; letter-spacing: .06em; font-size: 15px; text-decoration: none; }
-.brand .d { color: #fea2b3; text-shadow: 0 0 10px rgba(245,61,104,.6); }
-.brand .amp { color: rgba(255,255,255,.8); }
-.brand .k { color: #83adff; text-shadow: 0 0 10px rgba(41,112,254,.6); }
-h1 { font-size: 30px; line-height: 1.2; margin: 0 0 6px; letter-spacing: -.01em; }
-.meta { color: #85888e; font-size: 13.5px; margin-bottom: 32px; }
-h2 { font-size: 19px; margin: 34px 0 10px; }
-p, li { color: #c9c9cd; }
-li { margin: 6px 0; }
-a { color: #9591eb; }
+
+::selection { background: rgba(149, 145, 235, .32); }
+
+.wrap {
+  max-width: 44rem;          /* ~72 ký tự mỗi dòng — dài hơn là mỏi mắt */
+  margin: 0 auto;
+  padding: 3.5rem 1.4rem 5rem;
+}
+
+/* ── Header ──────────────────────────────────────────────────────────── */
+
+header.site {
+  display: flex;
+  align-items: center;
+  padding-bottom: 1.4rem;
+  margin-bottom: 2.75rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  font-weight: 800;
+  letter-spacing: .09em;
+  font-size: 14px;
+  text-decoration: none;
+  display: inline-flex;
+  gap: .42em;
+  padding: .12em 0;
+  transition: opacity .15s ease;
+}
+.brand:hover { opacity: .78; }
+.brand .d   { color: var(--pink); text-shadow: 0 0 14px rgba(245, 61, 104, .55); }
+.brand .amp { color: rgba(255, 255, 255, .72); }
+.brand .k   { color: var(--blue); text-shadow: 0 0 14px rgba(41, 112, 254, .55); }
+
+/* ── Tiêu đề ─────────────────────────────────────────────────────────── */
+
+h1 {
+  font-size: clamp(2rem, 1.4rem + 2.4vw, 2.6rem);
+  line-height: 1.12;
+  letter-spacing: -.022em;
+  margin: 0 0 .5rem;
+}
+
+/* Gạch chân gradient hồng→xanh: chi tiết nhận diện duy nhất, đủ để trang
+   không còn trông như file text, mà không ồn ào. */
+h1::after {
+  content: "";
+  display: block;
+  width: 3.4rem;
+  height: 3px;
+  margin-top: 1rem;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--pink-g), var(--blue-g));
+}
+
+.meta {
+  color: var(--ink-3);
+  font-size: 14px;
+  margin: 1.15rem 0 2.6rem;
+}
+
+h2 {
+  font-size: 1.16rem;
+  line-height: 1.35;
+  letter-spacing: -.01em;
+  margin: 3rem 0 .7rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--line);
+  color: #fff;
+}
+/* Mục đầu tiên đứng ngay sau card tóm tắt thì không cần vạch ngăn nữa. */
+.card + h2 { border-top: 0; padding-top: 0; margin-top: 2.6rem; }
+
+p, li { color: var(--ink-2); }
+p { margin: 0 0 1rem; }
+
+ul { padding-left: 1.15rem; margin: 0 0 1rem; }
+li { margin: .45rem 0; }
+li::marker { color: var(--brand); }
+
+strong { color: var(--ink); font-weight: 650; }
+
+a {
+  color: var(--brand);
+  text-decoration-color: rgba(149, 145, 235, .42);
+  text-underline-offset: .18em;
+  transition: text-decoration-color .15s ease;
+}
+a:hover { text-decoration-color: var(--brand); }
+a:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* ── Card tóm tắt ────────────────────────────────────────────────────── */
+
 .card {
-  background: #12151b; border: 1px solid rgba(55,58,65,.6);
-  border-radius: 14px; padding: 18px 20px; margin: 18px 0;
+  position: relative;
+  background: linear-gradient(180deg, rgba(24, 27, 35, .9), var(--raise));
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1.35rem 1.5rem;
+  margin: 1.6rem 0 0;
 }
+/* Vệt gradient mỏng bên trái thay cho viền phẳng — cùng cặp màu với h1. */
+.card::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 14%; bottom: 14%;
+  width: 3px;
+  border-radius: 99px;
+  background: linear-gradient(180deg, var(--pink-g), var(--blue-g));
+}
+.card p { margin: 0; color: var(--ink); }
+
+.note { font-size: 14px; color: var(--ink-3); }
+
+/* ── Footer ──────────────────────────────────────────────────────────── */
+
 footer.site {
-  margin-top: 56px; padding-top: 22px; font-size: 13.5px; color: #85888e;
-  border-top: 1px solid rgba(55,58,65,.5);
-  display: flex; gap: 18px; flex-wrap: wrap;
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+  color: var(--ink-3);
+  display: flex;
+  gap: 1.4rem;
+  flex-wrap: wrap;
+  align-items: center;
 }
-footer.site a { color: #85888e; }
-.note { font-size: 13.5px; color: #85888e; }
+footer.site a {
+  color: var(--ink-3);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+}
+footer.site a:hover { color: var(--ink-2); border-bottom-color: var(--line); }
+footer.site span { margin-left: auto; }
+
+/* ── Màn hẹp ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 30rem) {
+  body { font-size: 16px; }
+  .wrap { padding: 2.5rem 1.15rem 3.5rem; }
+  h2 { margin-top: 2.4rem; }
+  footer.site { gap: 1rem; }
+  footer.site span { margin-left: 0; width: 100%; }
+}
+
+/* Người dùng bật giảm chuyển động thì bỏ hết transition. */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
