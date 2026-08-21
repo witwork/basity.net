@@ -13,49 +13,93 @@
   </header>
 
   <h1>Privacy Policy</h1>
-  <p class="meta">Effective August 2, 2026 · Applies to the PunchCraft mobile app, published by Basity ("we", "us").</p>
+  <p class="meta">Effective August 22, 2026 · Applies to the PunchCraft mobile app, published by Basity ("we", "us"). This version replaces the August 2, 2026 policy, which described an earlier build that ran entirely offline.</p>
 
   <div class="card">
     <p style="margin:0"><strong>The short version:</strong> PunchCraft has no
-    accounts, no sign-in, and collects no personal information. Everything you
-    do in the game — every element you discover — stays on your device.</p>
+    accounts and never asks for your name, email, or phone number. Your
+    collection and progress live on your device. When you combine two words
+    nobody has combined before, the app asks our server to write the result —
+    that request carries the two words, an anonymous device code, and nothing
+    about you.</p>
   </div>
 
-  <h2>1. Data stored on your device only</h2>
-  <p>The app stores the following on your device and nowhere else:</p>
+  <h2>1. What stays on your device</h2>
+  <p>The app stores the following locally, and we cannot read it:</p>
   <ul>
     <li>Your discovered elements, canvas layout, and game progress</li>
     <li>Level, energy, and daily-streak state</li>
     <li>Settings such as haptics and reminder preferences</li>
   </ul>
-  <p>This data is never uploaded, never shared, and is deleted when you delete
-  the app. We have no way to access it.</p>
+  <p>This data is deleted when you delete the app.</p>
 
-  <h2>2. On-device AI</h2>
-  <p>On supported iPhones, combining two undiscovered words may generate a new
-  element using Apple's on-device Foundation Models. This happens entirely on
-  your device: no prompt, no result, and no gameplay data is ever sent to us or
-  to any server.</p>
+  <h2>2. What we receive when you merge</h2>
+  <p>PunchCraft builds one shared library of results: the first time anyone
+  combines a given pair, the result is written once and then reused for every
+  player. To make that work, combining two words sends a request to our server
+  containing:</p>
+  <ul>
+    <li><strong>The two element names being combined</strong> (for example
+    <em>Phone + Ego</em>) and the result returned</li>
+    <li><strong>An anonymous device code</strong> — a one-way hash of Apple's
+    per-vendor identifier. It cannot be reversed, is not your Advertising
+    Identifier, and is not shared with anyone. We use it only to stop a single
+    device from flooding the content generator</li>
+    <li><strong>Your IP address</strong>, which any web server receives
+    automatically. We keep only a shortened form (the network prefix), used to
+    limit abuse</li>
+    <li><strong>Timing information</strong> — how long the request took — so we
+    can spot failures</li>
+  </ul>
+  <p>We do not receive your name, email, contacts, location, photos, or
+  Advertising Identifier. Nothing we receive identifies you personally.</p>
+  <p>Merge records are kept for up to 30 days and then deleted automatically.
+  The generated words themselves become part of the shared library and stay.</p>
 
-  <h2>3. Purchases</h2>
+  <h2>3. AI-generated content</h2>
+  <p>New combinations are written by <strong>Google's Gemini</strong> models,
+  called from our server. Only the two element names are sent to Google —
+  never your device code, IP address, or any other information about you.
+  Google processes the request as our service provider and does not use it to
+  build a profile of you.</p>
+  <p>Results are automatically filtered before you see them, and every
+  generated element has a <strong>Report</strong> button. Reporting sends us
+  the element name and your anonymous device code so we can review it and
+  remove it for everyone.</p>
+  <p>Earlier versions of PunchCraft generated words using Apple's on-device
+  Foundation Models. That feature has been removed and is no longer used.</p>
+
+  <h2>4. Purchases</h2>
   <p>The optional PunchCraft Pro subscription is processed entirely by Apple.
   We never see or store your name, payment details, or billing address.</p>
+  <p>To unlock Pro features, the app sends Apple's transaction identifier to
+  our server, which asks Apple to confirm the subscription is valid. We store
+  that identifier along with the plan and its expiry date. It identifies a
+  subscription, not a person.</p>
 
-  <h2>4. No tracking, no ads, no analytics</h2>
-  <p>The current version of PunchCraft contains no advertising, no third-party
-  analytics, and no tracking of any kind. If a future version adds ads, this
-  policy will be updated first and the app will ask for any consent the law
-  requires.</p>
+  <h2>5. No tracking, no ads, no third-party analytics</h2>
+  <p>PunchCraft contains no advertising, no analytics SDKs, and no tracking of
+  any kind. We do not combine what we receive with data from other apps or
+  websites, and we never sell or share it for advertising. If a future version
+  adds ads, this policy will be updated first and the app will ask for any
+  consent the law requires.</p>
 
-  <h2>5. Notifications</h2>
+  <h2>6. Notifications</h2>
   <p>If you enable the daily seed reminder, the notification is scheduled
   locally on your device. We do not send push notifications from a server.</p>
 
-  <h2>6. Children</h2>
-  <p>PunchCraft is not directed at children under 13, and since we collect no
-  personal information, we also collect none from children.</p>
+  <h2>7. Children</h2>
+  <p>PunchCraft is not directed at children under 13 and we do not knowingly
+  collect information from them. We collect no personal information from any
+  user, children included.</p>
 
-  <h2>7. Changes &amp; contact</h2>
+  <h2>8. Your choices</h2>
+  <p>Deleting the app removes everything stored on your device. Because we hold
+  no account and nothing that identifies you, there is no profile for us to
+  delete — but if you want the records tied to your device code removed early,
+  email us and we will erase them.</p>
+
+  <h2>9. Changes &amp; contact</h2>
   <p>If this policy changes, the new version will be posted here with a new
   effective date. Questions? Email
   <a href="mailto:support@basity.net">support@basity.net</a>.</p>
